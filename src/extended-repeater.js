@@ -18,15 +18,10 @@ import { NotImplementedError } from '../extensions/index.js';
 export default function repeater(str, options) {
   options.separator = options.separator || '+';
   options.additionSeparator = options.additionSeparator || '|';
-  options.addition = options.addition === null ? 'null' :
-    options.addition === false ? 'false' :
-      options.addition;
+  options.addition = options.addition === null ? 'null' : options.addition === false ? 'false' : options.addition;
 
-  const newArr = new Array(options.additionRepeatTimes).
-    fill(options.addition).
-    join(options.additionSeparator);
+  let newArr = new Array(options.additionRepeatTimes).fill(options.addition).join(options.additionSeparator);
 
-  return new Array(options.repeatTimes).
-    fill(str + newArr).
-    join(options.separator);
+  return new Array(options.repeatTimes).fill(str + newArr).join(options.separator);
 }
+
